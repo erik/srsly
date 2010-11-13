@@ -45,7 +45,7 @@ post '/' do
   @link = make_link(params[:link])
   prev = URL.first(:link => @link)
   if prev
-    @id = prev.id
+    @id = to_base36 prev.id
   else
     url = URL.new :link => @link
     url.save!
@@ -66,9 +66,9 @@ get '/:id' do
 end
 
 get '/view/:id' do 
-  @url = URL.get(params[:id])
+  @url = URL.get(to_base10(params[:id]).to_i)
   if @url
-    haml "%h1 this leads to #{@url.link}"
+    haml "%h1 #{params[:id]} leads to #{@url.link}"
   else
     haml "%h1 dunno know link"
   end

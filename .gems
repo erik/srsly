@@ -1,3 +1,4 @@
 sinatra
 haml
 datamapper
+dm-postgres-adapter
