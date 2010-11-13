@@ -5,7 +5,7 @@ require 'sass'
 require 'datamapper'
 require 'uri'
 
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/srsly.db")
+DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/srsly.db")
 
 class URL 
   include DataMapper::Resource
@@ -61,7 +61,7 @@ get '/:id' do
   if @url
     redirect @url.link
   else
-    haml "%h1 dunno know link"
+    haml "%h1 dunno link"
   end
 end
 
