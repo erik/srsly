@@ -57,6 +57,30 @@ get '/view' do
   haml :view_form
 end
 
+post '/api' do
+  method = params[:q]
+  link = (params[:link] || "").strip
+  id = (params[:id] || "").strip
+  case method
+    when 'create' then
+      if link.size == 0 || link.size > 512
+        return "bad url"
+      end
+      url = URL.first_or_create :link => make_link(link)
+      url.save
+      "#{url.id}"
+    when 'view' then
+      url = URL.get(to_base10(id))
+      if url
+        return url.link
+      end
+      "unknown id"     
+    else
+      status 404
+      "Not Found"
+  end     
+end
+
 post '/' do
   link = params[:link].strip
   if link.size == 0
