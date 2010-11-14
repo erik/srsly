@@ -5,15 +5,26 @@ $contcolor: #444;
 body {
   background-color: $bodycolor;
   color: $offwhite;
+  font-family: sans-serif;
 }
 
 #container {
   background-color: $contcolor;
 
-  margin-left: auto;
-  margin-right: auto;
-  width: 700px;
   text-align: center;
+
+  width: 700px;
+  height: 125px;
+
+  /* center horizontally and vertically */
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
   padding: 0px 10px 10px 10px;
 
   h1 {
@@ -23,12 +34,8 @@ body {
 }
 
 #footer {
-  padding-top: 15px;  
-
-  a { 
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+  padding-top: 15px;
+  padding: 20px;
 }
 
 .round {
