@@ -45,6 +45,14 @@ get '/about' do
   haml :about
 end
 
+get '/view' do
+  if params[:id]
+    redirect "/view/#{params[:id]}"
+    return
+  end
+  haml :view_form
+end
+
 post '/' do 
   @link = make_link(params[:link])
   prev = URL.first(:link => @link)
