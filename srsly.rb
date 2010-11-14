@@ -13,9 +13,10 @@ class URL
   property :link, String
 end
 
+DataMapper::Model.raise_on_save_failure = true
+
 DataMapper.finalize
 DataMapper.auto_upgrade!
-  
 
 helpers do
   def to_base36(dec)
@@ -55,14 +56,9 @@ end
 
 post '/' do 
   @link = make_link(params[:link])
-  prev = URL.first(:link => @link)
-  if prev
-    @id = to_base36 prev.id
-  else
-    url = URL.new :link => @link
-    url.save!
-    @id = to_base36 url.id
-  end
+
+  url = URL.first_or_create(:link => @link)
+  @id = to_base36(url.id)
   
   haml :created 
 end
@@ -78,8 +74,8 @@ get '/:id' do
 end
 
 get '/view/:id' do 
-  @url = URL.get(to_base10(params[:id]).to_i)
   @id = params[:id]
+  @url = URL.get(to_base10(@id)
   if @url
     haml :view
   else
