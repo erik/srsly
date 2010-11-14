@@ -10,7 +10,10 @@ DataMapper::setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/srsly.d
 class URL 
   include DataMapper::Resource
   property :id, Serial
-  property :link, String
+  property :link, String, :length => 7...512,
+    :messages => {
+      :length => "URL is too long! Must be less than 512 characters"
+    }     
 end
 
 DataMapper::Model.raise_on_save_failure = true
@@ -54,12 +57,26 @@ get '/view' do
   haml :view_form
 end
 
-post '/' do 
-  @link = make_link(params[:link])
-
-  url = URL.first_or_create(:link => @link)
-  @id = to_base36(url.id)
-  
+post '/' do
+  link = params[:link].strip
+  if link.size == 0
+    @errors = ["URL can't be empty!"]
+    redirect '/'
+    return
+  end
+  @link = make_link(link)
+  prev = URL.get(:link => @link)
+  error = false
+  if prev
+    @id = to_base36(prev.id)
+  else
+    begin
+      url = URL.new(:link => @link)
+      url.save
+    rescue Exception => e
+      redirect '/'
+    end
+  end
   haml :created 
 end
 

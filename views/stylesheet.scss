@@ -14,6 +14,12 @@ body {
   margin-right: auto;
   width: 700px;
   text-align: center;
+  padding: 0px 10px 10px 10px;
+
+  h1 {
+    font-size: 24px;
+  }
+
 }
 
 .round {
@@ -30,6 +36,10 @@ body {
 
 a {
   color: $offwhite;
+  text-decoration: none;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 a:active, a:hover {
