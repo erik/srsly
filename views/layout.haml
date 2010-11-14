@@ -1,7 +1,14 @@
 %html
   %head
     %title srsly
-    %link{"rel" => "stylesheet", "href" => "stylesheet.css", "type" => "text/css"}
+    %link{"rel" => "stylesheet", "href" => "/stylesheet.css", "type" => "text/css"}
   %body
-    #container
+    %div{:id => 'container', :class => 'round'}
+      %h1 Srsly?
       = yield
+      #footer
+        %a{:href=>'/', :class=>'roundSmall'} Home
+        %a{:href=>'about', :class=>'roundSmall'} About
+        %a{:href=>'view', :class=>'roundSmall'} View
+        %a{:href=>'http://github.com/boredomist/srsly', :class=>'roundSmall'} Code
+        

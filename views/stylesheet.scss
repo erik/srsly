@@ -1,3 +1,38 @@
+$offwhite: #ddd;
+$bodycolor: #333;
+$contcolor: #444;
+
 body {
-  background-color: #FFE;
+  background-color: $bodycolor;
+  color: $offwhite;
+}
+
+#container {
+  background-color: $contcolor;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  text-align: center;
+}
+
+.round {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius:10px;
+}
+
+.roundSmall {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+a {
+  color: $offwhite;
+}
+
+a:active, a:hover {
+  background-color: $offwhite;
+  color: $bodycolor;
 }

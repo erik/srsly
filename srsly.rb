@@ -41,6 +41,10 @@ get '/stylesheet.css' do
   scss :stylesheet
 end
 
+get '/about' do 
+  haml :about
+end
+
 post '/' do 
   @link = make_link(params[:link])
   prev = URL.first(:link => @link)
@@ -52,24 +56,25 @@ post '/' do
     @id = to_base36 url.id
   end
   
-  redirect "/view/#{@id}"
- 
+  haml :created 
 end
 
 get '/:id' do
-  @url = URL.get(params[:id])
+  @id = params[:id]
+  @url = URL.get(@id)
   if @url
     redirect @url.link
   else
-    haml "%h1 dunno link"
+    haml :unknown_link
   end
 end
 
 get '/view/:id' do 
   @url = URL.get(to_base10(params[:id]).to_i)
+  @id = params[:id]
   if @url
-    haml "%h1 #{params[:id]} leads to #{@url.link}"
+    haml :view
   else
-    haml "%h1 dunno know link"
+    haml :unknown_link
   end
 end
