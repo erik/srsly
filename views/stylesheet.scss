@@ -22,6 +22,13 @@ body {
 
 }
 
+#footer {
+  a { 
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
 .round {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -37,9 +44,6 @@ body {
 a {
   color: $offwhite;
   text-decoration: none;
-
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 a:active, a:hover {

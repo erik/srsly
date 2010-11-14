@@ -60,7 +60,6 @@ end
 post '/' do
   link = params[:link].strip
   if link.size == 0
-    @errors = ["URL can't be empty!"]
     redirect '/'
     return
   end
@@ -76,6 +75,7 @@ post '/' do
     rescue Exception => e
       redirect '/'
     end
+    @id = to_base36(url.id)
   end
   haml :created 
 end
