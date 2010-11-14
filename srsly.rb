@@ -75,7 +75,7 @@ end
 
 get '/view/:id' do 
   @id = params[:id]
-  @url = URL.get(to_base10(@id)
+  @url = URL.get(to_base10(@id))
   if @url
     haml :view
   else
