@@ -69,7 +69,7 @@ end
 
 get '/:id' do
   @id = params[:id]
-  @url = URL.get(@id)
+  @url = URL.get(to_base10(@id))
   if @url
     redirect @url.link
   else
