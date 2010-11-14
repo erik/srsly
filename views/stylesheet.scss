@@ -8,34 +8,45 @@ body {
   font-family: sans-serif;
 }
 
-#container {
-  background-color: $contcolor;
-
-  text-align: center;
-
+#body {
   width: 700px;
-  height: 125px;
-
-  /* center horizontally and vertically */
-  position: absolute;
+  position: fixed;
 
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   margin: auto;
+}
+
+#container {
+  #header {
+    margin-top: 10px;
+  }
+  
+  #footer {
+    padding-top: 15px;
+    padding: 10px;
+  }
+
+  background-color: $contcolor;
+
+  width: 700px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+
 
   padding: 0px 10px 10px 10px;
+
+  -moz-box-shadow: 10px 10px 5px rgba(0, 0, 0, .2);
+  -webkit-box-shadow: 10px 10px 5px rgba(0, 0, 0, .2);
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, .2);
 
   h1 {
     font-size: 24px;
   }
 
-}
-
-#footer {
-  padding-top: 15px;
-  padding: 20px;
 }
 
 .round {

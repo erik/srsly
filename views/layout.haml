@@ -5,12 +5,14 @@
     %meta{:'http-equiv'=> "Content-type", :content => "text/html;charset=UTF-8"}
     %link{"rel" => "stylesheet", "href" => "/stylesheet.css", "type" => "text/css"}
   %body
-    %div{:id => 'container', :class => 'round'}
-      %h1 Srsly?
-      = yield
-      #footer
-        %a{:href=>'/', :class=>'roundSmall'} Home
-        %a{:href=>'/about', :class=>'roundSmall'} About
-        %a{:href=>'/view', :class=>'roundSmall'} View
-        %a{:href=>'http://github.com/boredomist/srsly', :class=>'roundSmall'} Code
+    #body
+      %div{:id => 'container', :class => 'round'}
+        #header
+          %h1 Srsly?
+        = yield
+        #footer
+          %a{:href=>'/', :class=>'roundSmall'} Home
+          %a{:href=>'/about', :class=>'roundSmall'} About
+          %a{:href=>'/view', :class=>'roundSmall'} View
+          %a{:href=>'http://github.com/boredomist/srsly', :class=>'roundSmall'} Code
         
