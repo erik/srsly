@@ -68,7 +68,7 @@ post '/api' do
       end
       url = URL.first_or_create :link => make_link(link)
       url.save
-      "#{url.id}"
+      "#{to_base36 url.id}"
     when 'view' then
       url = URL.get(to_base10(id))
       if url
